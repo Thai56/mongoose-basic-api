@@ -1,3 +1,5 @@
+var Song = require('../models/Song');
+
 module.exports = {
 	getSongs: function(req, res) {
 		Song

@@ -4,6 +4,7 @@ module.exports = {
 	getSongs: function(req, res) {
 		Song
 		.find(req.query)
+		.populate('artists')
 		.exec()
 		.then(function(songs) {
 			return res.json(songs);
@@ -15,6 +16,17 @@ module.exports = {
 		.exec()
 		.then(function(song) {
 			return res.json(song);
+		});
+	},
+	addArtist: function(req, res) {
+		Song.
+		findOne({_id: req.params.id})
+		.exec()
+		.then(function(song) {
+			song.artists.push(req.body.artist);
+			song.save().then(function() {
+				return res.status(201).end();
+			});
 		});
 	},
 	updateSong: function(req, res) {

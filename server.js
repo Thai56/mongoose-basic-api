@@ -7,6 +7,7 @@ var SongController = require('./controllers/SongController');
 var ArtistController = require('./controllers/ArtistController');
 
 var app = express();
+app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.json());
 
 app.post('/api/songs', SongController.createSong);

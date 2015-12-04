@@ -23,7 +23,7 @@ app.put('/api/artists/:id', ArtistController.updateArtist);
 app.delete('/api/artists/:id', ArtistController.removeArtist);
 
 
-app.listen(8888);
+app.listen(process.env.PORT || 8888);
 
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
